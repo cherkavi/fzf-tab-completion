@@ -3,7 +3,7 @@ _FZF_COMPLETION_SEP=$'\x01'
 # shell parsing stuff
 _fzf_bash_completion_awk="$( builtin command -v gawk &>/dev/null && echo gawk || echo awk )"
 _fzf_bash_completion_sed="$( builtin command -v gsed &>/dev/null && echo gsed || echo sed )"
-_fzf_bash_completion_grep="$( builtin command -v ggrep &>/dev/null && echo ggrep || echo builtin command grep )"
+_fzf_bash_completion_grep="$( builtin command -v ggrep &>/dev/null && echo ggrep || builtin command -v grep &>/dev/null && echo grep || echo builtin command grep )"
 
 _fzf_bash_completion_awk_escape() {
     "$_fzf_bash_completion_sed" 's/\\/\\\\\\\\/g; s/[[*^$.]/\\\\&/g' <<<"$1"
